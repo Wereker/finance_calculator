@@ -12,7 +12,7 @@ def test_add_income_negative():
 
 def test_add_expense():
     assert add_expense(100, 30) == 70
-    assert add_expense(50, 50) == 10
+    assert add_expense(50, 50) == 0
 
 def test_add_expense_negative():
     with pytest.raises(ValueError, match="Expense cannot be negative"):
