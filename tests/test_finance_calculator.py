@@ -1,32 +1,33 @@
-# finance_calculator.py
-
-def add_income(balance, income):
-    """Добавить доход к балансу."""
-    if income < 0:
-        raise ValueError("Income cannot be negative")
-    return balance + income
+import pytest
+from finance_calculator import add_income, add_expense, calculate_balance
 
 
-def add_expense(balance, expense):
-    """Вычесть расход из баланса."""
-    if expense < 0:
-        raise ValueError("Expense cannot be negative")
-    if balance < expense:
-        raise ValueError("Insufficient funds")
-    return balance - expense
+def test_add_income():
+    assert add_income(100, 50) == 150
+    assert add_income(0, 100) == 100
 
 
-def calculate_balance(income_list, expense_list):
-    """Рассчитать итоговый баланс по спискам доходов и расходов."""
-    balance = 0
-    for inc in income_list:
-        balance = add_income(balance, inc)
-    for exp in expense_list:
-        balance = add_expense(balance, exp)
-    return balance
+def test_add_income_negative():
+    with pytest.raises(ValueError, match="Income cannot be negative"):
+        add_income(100, -10)
 
 
-if __name__ == "__main__":
-    inc = [2000, 500]
-    exp = [300, 200, 100]
-    print("Final balance:", calculate_balance(inc, exp))
+def test_add_expense():
+    assert add_expense(100, 30) == 70
+    assert add_expense(50, 50) == 0
+
+
+def test_add_expense_negative():
+    with pytest.raises(ValueError, match="Expense cannot be negative"):
+        add_expense(100, -10)
+
+
+def test_add_expense_insufficient():
+    with pytest.raises(ValueError, match="Insufficient funds"):
+        add_expense(20, 50)
+
+
+def test_calculate_balance():
+    income = [1000, 200]
+    expenses = [300, 150]
+    assert calculate_balance(income, expenses) == 750
