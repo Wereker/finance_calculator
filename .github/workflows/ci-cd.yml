@@ -6,7 +6,7 @@ on:
 
 jobs:
   lint:
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
@@ -21,7 +21,7 @@ jobs:
           flake8 . --count --show-source --statistics
 
   test:
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
@@ -39,7 +39,7 @@ jobs:
 
   build-and-push-docker:
     needs: [lint, test]
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Set up Docker Buildx
@@ -58,7 +58,7 @@ jobs:
 
   deploy:
     needs: build-and-push-docker
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Deploy to server via SSH
         uses: appleboy/ssh-action@v1.0.3
