@@ -5,6 +5,6 @@ WORKDIR /app
 COPY finance_calculator.py .
 COPY r.txt .
 
-RUN pip install -r r.txt
+RUN pip install -r requirements.txt
 
 CMD ["python", "finance_calculator.py"]
