@@ -4,6 +4,7 @@ def add_income(balance, income):
         raise ValueError("Income cannot be negative")
     return balance + income
 
+
 def add_expense(balance, expense):
     """Вычесть расход из баланса."""
     if expense < 0:
@@ -11,6 +12,7 @@ def add_expense(balance, expense):
     if balance < expense:
         raise ValueError("Insufficient funds")
     return balance - expense
+
 
 def calculate_balance(income_list, expense_list):
     """Рассчитать итоговый баланс по спискам доходов и расходов."""
@@ -23,6 +25,6 @@ def calculate_balance(income_list, expense_list):
 
 
 if __name__ == "__main__":
-    inc = [2000, 600]
+    inc = [2000, 500]
     exp = [300, 200, 100]
     print("Final balance:", calculate_balance(inc, exp))
