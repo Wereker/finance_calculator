@@ -23,6 +23,6 @@ def calculate_balance(income_list, expense_list):
 
 
 if __name__ == "__main__":
-    inc = [2000, 500]
+    inc = [2000, 600]
     exp = [300, 200, 100]
     print("Final balance:", calculate_balance(inc, exp))
