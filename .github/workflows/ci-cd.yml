@@ -33,7 +33,6 @@ jobs:
 
   build-and-push-docker:
     needs: [lint, test]
-    # needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
