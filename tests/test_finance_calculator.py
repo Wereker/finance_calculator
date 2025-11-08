@@ -3,7 +3,7 @@ from finance_calculator import add_income, add_expense, calculate_balance
 
 
 def test_add_income():
-    assert add_income(100, 50) == 160
+    assert add_income(100, 50) == 150
     assert add_income(0, 100) == 100
 
 
